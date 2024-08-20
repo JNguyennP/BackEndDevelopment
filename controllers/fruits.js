@@ -8,7 +8,7 @@ const index = async (req, res) => {
     } catch(err) {
         res.status(500).send({error: 'Server Error'})
     }
-}
+};
 
 const show = async (req, res) =>{
     const name = req.params.name.toLowerCase();
@@ -20,6 +20,16 @@ const show = async (req, res) =>{
     } catch (err) {
         res.status(404).send({error: err})
     }
-}
+};
 
-module.exports = {index, show}
+const create = async (req, res ) => {
+    try{
+        const newFruit = await Fruit.create(req.body);
+        res.status(201).send(newFruit);
+
+    } catch(err){
+        res.status(409).send({error: err})
+    }
+};
+
+module.exports = {index, show, create}
