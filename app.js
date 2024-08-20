@@ -6,6 +6,8 @@ app.get('/', (req, res) => {
     res.send('Hello Fruit!');
 })
 
-app.use('/fruits', fruits)
+app.use(cors());
+app.use(express.json());
+app.use('/fruits', fruits);
 
 module.exports = app
