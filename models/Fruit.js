@@ -39,6 +39,30 @@ class Fruit{
             }
     };
 
+    update (data){
+        const updatedFruit = fruits.find(fruit => fruit.name.toLowerCase() === this.name.toLowerCase());
+
+        if (updatedFruit){
+            updatedFruit.name = data.name;
+            updatedFruit.family = data.family;
+            return new Fruit(updatedFruit);
+ 
+        } else {
+            throw 'Fruit not found';
+        }
+    };
+
+    destroy() {
+        const deletedFruit = fruits.find(fruit => fruit.name.toLowerCase() === this.name.toLowerCase())
+
+        if (deletedFruit){
+            const index = fruits.indexOf(deletedFruit);
+            fruits.splice(index, 1);
+        } else {
+            throw 'Quote not found';
+        }
+    };
+
 
 }
 
